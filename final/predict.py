@@ -18,8 +18,7 @@ def predicciones(json_file, modelo_path='/Users/diferlanderos/Desktop/RetoCasas/
     predicciones=modelo.predict(X)
     #print(predicciones[-1])
     df.at[df.index[-1], 'SalePrice'] = predicciones[-1]
-    return df[['LotArea','Neighborhood','SalePrice']].tail(1).to_dict(orient='records')
-#Tamaño del lote', 'Colonia', 'Precio de venta'
+    return df.tail(1).to_dict(orient='records')
 
 json_file = '/Users/diferlanderos/Desktop/RetoCasas/Casas/casas.json'
 resultado=predicciones(json_file)

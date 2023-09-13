@@ -15,8 +15,8 @@ def predicciones(json_file, modelo_path='/Users/diferlanderos/Desktop/RetoCasas/
     X = X.drop('Precio de venta') # Elimina la columna de precio de venta
     X = X.to_frame() # Convierte X en un DataFrame de una columna
     print(X.columns)    # Calcula la media de las columnas específicas y rellena los valores faltantes en X
-    medias = df[['Año de construccion', 'Año de remodelacion', 'Año de construccion de garage', 'Año de venta']].mean()
-    X[['Año de construccion', 'Año de remodelacion', 'Año de construccion de garage', 'Año de venta']] = X[['Año de construccion', 'Año de remodelacion', 'Año de construccion de garage', 'Año de venta']].fillna(medias)
+    medias = df[['YrBlt', 'YearRemodAdd', 'GarageYrBlt', 'Yrsold']].mean()
+    X[['YrBlt', 'YearRemodAdd', 'GarageYrBlt', 'Yrsold']].fillna(medias)
     X.fillna(0, inplace=True)
     print(X)
     # Realiza la transformación de las características utilizando el preprocesador
