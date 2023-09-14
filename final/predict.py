@@ -1,6 +1,7 @@
 import joblib
 import pandas as pd
 import json
+from flask import jsonify
 
 def predicciones(json_file, modelo_path='/Users/diferlanderos/Desktop/RetoCasas/Casas/pipeline_houses_final_v4.joblib'):
     modelo = joblib.load(modelo_path)
