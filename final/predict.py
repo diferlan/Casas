@@ -10,7 +10,7 @@ def predicciones(json_file, modelo_path='/Users/diferlanderos/Desktop/RetoCasas/
         casas_json = json.load(archivo)
     # Convierte el JSON nuevamente en un DataFrame
     df = pd.DataFrame(casas_json['casas'])
-    X = df.drop('SalePrice', axis=1)
+    X = df.drop(['SalePrice','id'], axis=1)
     #print(X.head())
     # Calcula la media de las columnas específicas y rellena los valores faltantes en X
     medias = df[['YearBuilt', 'YearRemodAdd','GarageYrBlt','YrSold']].mean()
@@ -21,6 +21,6 @@ def predicciones(json_file, modelo_path='/Users/diferlanderos/Desktop/RetoCasas/
     df.at[df.index[-1], 'SalePrice'] = predicciones[-1]
     return df.tail(1).to_dict(orient='records')
 
-json_file = '/Users/diferlanderos/Desktop/RetoCasas/Casas/casas.json'
+json_file = '/Users/diferlanderos/Desktop/RetoCasas/Casas/Codigo ordenado/KREND.json'
 resultado=predicciones(json_file)
 print(resultado)
